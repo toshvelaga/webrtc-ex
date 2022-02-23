@@ -42,7 +42,7 @@ io.on('connection', (socket) => {
     // push socket.id into array if path does not include ?ghost
     if (!path.includes('?ghost')) {
       connections[editedPath].push(socket.id)
-
+      
       timeOnline[socket.id] = new Date()
     }
     // loop over length of array in room which contains users
