@@ -5,15 +5,15 @@ const app = express()
 const bodyParser = require('body-parser')
 var server = http.createServer(app)
 
+app.use(cors())
+app.use(bodyParser.json())
+app.set('port', process.env.PORT || 4001)
+
 const io = require('socket.io')(server, {
   cors: {
     origin: '*',
   },
 })
-
-app.use(cors())
-app.use(bodyParser.json())
-app.set('port', process.env.PORT || 4001)
 
 let connections = {}
 // connections example: { 'http://localhost:8000/demo':
@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     if (connections[editedPath] === undefined) {
       connections[editedPath] = []
     }
-    // push socket.id into array
+    // push socket.id into array if path does not include ?ghost
     if (!path.includes('?ghost')) {
       connections[editedPath].push(socket.id)
 
@@ -64,7 +64,6 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    var diffTime = Math.abs(timeOnline[socket.id] - new Date())
     var key
     // loop over keys and values of connections object which is now an array
     for (const [k, v] of JSON.parse(
@@ -82,8 +81,6 @@ io.on('connection', (socket) => {
           var index = connections[key].indexOf(socket.id)
           // remove user from room
           connections[key].splice(index, 1)
-
-          console.log(key, socket.id, Math.ceil(diffTime / 1000))
           // delete room if no users are present
           if (connections[key].length === 0) {
             delete connections[key]

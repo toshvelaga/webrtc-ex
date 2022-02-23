@@ -83,7 +83,7 @@ const Video = () => {
 
   const gotMessageFromServer = (fromId, message) => {
     var signal = JSON.parse(message)
-
+    
     if (fromId !== socketId) {
       if (signal.sdp) {
         connections[fromId]
@@ -234,7 +234,6 @@ const Video = () => {
   const connect = () => {
     setvideoPreview(false)
     getUserMedia()
-
     connectToSocketServer()
   }
 

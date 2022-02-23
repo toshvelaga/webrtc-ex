@@ -1,6 +1,6 @@
 # Video Meeting
 
-Most of the code is based off this [excellent repo](https://github.com/0x5eba/Video-Meeting) by [Sebastien Biollo](https://github.com/x5eb)
+Code is based off this [excellent repo](https://github.com/0x5eba/Video-Meeting) by [Sebastien Biollo](https://github.com/x5eb)
 
 Google Meet / Zoom clone in a few lines of code.
 
