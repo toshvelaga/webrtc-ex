@@ -4,11 +4,12 @@ Most of the code is based off this [excellent repo](https://github.com/0x5eba/Vi
 
 Google Meet / Zoom clone in a few lines of code.
 
-Developed with ReactJS, Node.js, SocketIO. Also uses puppeteer-stream
+Developed with ReactJS, Node.js, SocketIO.
 
-Main logic is in Video.js (frontend) and server.js (server)
+Main logic is in src/Video.js (frontend) and server.js (server)
 
 ### Local setup
 
 1. `npm install`
 2. `npm start`
+3. `nodemon server`
