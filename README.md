@@ -1,6 +1,6 @@
 # Video Meeting
 
-<img width="1237" alt="Screen Shot 2022-02-23 at 4 27 40 PM" src="https://user-images.githubusercontent.com/38474161/155429209-26e7f5ff-4d29-4545-ac60-589f40d44f1e.png">
+<img width="800" alt="Screen Shot 2022-02-23 at 4 27 40 PM" src="https://user-images.githubusercontent.com/38474161/155429209-26e7f5ff-4d29-4545-ac60-589f40d44f1e.png">
 
 Code is based off this [excellent repo](https://github.com/0x5eba/Video-Meeting) by [Sebastien Biollo](https://github.com/x5eb)
 
