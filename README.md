@@ -10,6 +10,10 @@ Developed with ReactJS, Node.js, SocketIO.
 
 Main logic is in src/Video.js (frontend) and server.js (server)
 
+# Problem to Solve
+
+1. [How to NOT add a new participant if I join with ?ghost param in the url so that I can record the meeting.](https://stackoverflow.com/questions/71243659/how-to-only-accept-video-streams-from-other-participants-in-webrtc-video-chat-wi)
+
 ### Local setup
 
 1. `npm install`
