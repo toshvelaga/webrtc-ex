@@ -19,11 +19,6 @@ let connections = {}
 // connections example: { 'http://localhost:8000/demo':
 //   [ 'msZkzHGsJ9pd3IzHAAAB', '748f9D8giwRR5uXtAAAD' ]
 // }
-let timeOnline = {}
-// timeOnline example: {
-//   H0RbYU2nFg9dDcjwAAAB: 2022-02-21T06:47:23.715Z,
-//   uZ9Fj1R0Q2VS3EgOAAAD: 2022-02-21T06:47:35.652Z
-// }
 
 const removeQueryParamFromUrl = (url) => {
   return url.split('?')[0]
@@ -42,8 +37,6 @@ io.on('connection', (socket) => {
     // push socket.id into array if path does not include ?ghost
     if (!path.includes('?ghost')) {
       connections[editedPath].push(socket.id)
-      
-      timeOnline[socket.id] = new Date()
     }
     // loop over length of array in room which contains users
     for (let a = 0; a < connections[editedPath].length; ++a) {
