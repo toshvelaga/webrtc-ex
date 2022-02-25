@@ -9,7 +9,6 @@ import './Video.css'
 const Video = () => {
   const localVideoref = useRef(null)
 
-  const [video, setvideo] = useState(true)
   const [videoPreview, setvideoPreview] = useState(true)
   const [streams, setstreams] = useState([])
 
@@ -44,7 +43,7 @@ const Video = () => {
 
   const getUserMedia = () => {
     navigator.mediaDevices
-      .getUserMedia({ video: video, audio: true })
+      .getUserMedia({ video: true, audio: true })
       .then((stream) => {
         getUserMediaSuccess(stream)
       })
@@ -83,7 +82,7 @@ const Video = () => {
 
   const gotMessageFromServer = (fromId, message) => {
     var signal = JSON.parse(message)
-    
+
     if (fromId !== socketId) {
       if (signal.sdp) {
         connections[fromId]
