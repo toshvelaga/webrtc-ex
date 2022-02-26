@@ -35,9 +35,8 @@ io.on('connection', (socket) => {
       connections[editedPath] = []
     }
     // push socket.id into array if path does not include ?ghost
-    if (!path.includes('?ghost')) {
-      connections[editedPath].push(socket.id)
-    }
+    connections[editedPath].push(socket.id)
+
     // loop over length of array in room which contains users
     for (let a = 0; a < connections[editedPath].length; ++a) {
       // emit to each user

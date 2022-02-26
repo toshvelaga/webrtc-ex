@@ -22,15 +22,13 @@ const Video = () => {
 
   useEffect(() => {
     // GET USER VIDEO PREVIEW BEFORE ENTERING ROOM IF ghost IS NOT IN QUERY PARAM
-    if (!window.location.href.includes('ghost')) {
-      getPermissions()
-    }
+    getPermissions()
   }, [])
 
   const getPermissions = async () => {
     await navigator.mediaDevices
       .getUserMedia({
-        video: true,
+        video: window.location.href.includes('ghost') ? false : true,
         audio: true,
       })
       .then((stream) => {
@@ -43,7 +41,10 @@ const Video = () => {
 
   const getUserMedia = () => {
     navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
+      .getUserMedia({
+        video: window.location.href.includes('ghost') ? false : true,
+        audio: true,
+      })
       .then((stream) => {
         getUserMediaSuccess(stream)
       })
@@ -59,7 +60,8 @@ const Video = () => {
       if (id === socketId) continue
 
       stream.getTracks().forEach((track) => {
-        connections[id].addTrack(track, stream)
+        !window.location.href.includes('ghost') &&
+          connections[id].addTrack(track, stream)
       })
 
       // Create offers to connect with other users who join room
