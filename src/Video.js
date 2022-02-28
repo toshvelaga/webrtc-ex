@@ -160,7 +160,7 @@ const Video = () => {
             }
           }
 
-          // Wait for their video stream
+          // Wait for video stream from other participants and add it to DOM
           connections[socketListId].ontrack = (event) => {
             var searchVideo = document.querySelector(
               `[data-socket="${socketListId}"]`
