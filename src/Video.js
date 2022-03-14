@@ -64,7 +64,7 @@ const Video = () => {
           connections[id].addTrack(track, stream)
       })
 
-      // Create offers to connect with other users who join room
+      // User creates offers to connect with other users who join room
       // eslint-disable-next-line no-loop-func
       connections[id].createOffer().then((description) => {
         connections[id]
@@ -84,7 +84,7 @@ const Video = () => {
 
   const gotMessageFromServer = (fromId, message) => {
     var signal = JSON.parse(message)
-
+    // get remote descriptions from other users and create an answer to send to them
     if (fromId !== socketId) {
       if (signal.sdp) {
         connections[fromId]
@@ -170,7 +170,7 @@ const Video = () => {
               searchVideo.srcObject = event.streams[0]
             } else {
               // ADD NEW VIDEO ELEMENT TO THE DOM AND CHANGE CSS WIDTH + HEIGHT OF VIDEOS
-              elms = clients.length
+              elms = clients.length - 1
               let main = document.getElementById('main')
               let cssMesure = changeCssVideos(main, elms)
 
